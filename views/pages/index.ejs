@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" content="5"> -->
+    <script src="https://cdn.plot.ly/plotly-2.5.1.min.js"></script>
+    <title>Độ sâu thị trường</title>
+  </head>
+  <body>
+    <div id="myDiv"></div>
+    <script>
+      async function fetchData() {
+        let data = await fetch('http://localhost:5998/get-data')
+        data = await data.json()
+        return data
+      }
+
+      let isRendered = false
+      const RENDER_INTERVAL = 2000
+
+      async function setupData() {
+        // let arr =  <%- JSON.stringify(globalArr) %>
+        // console.log(JSON.parse(arr));
+        let arr = await fetchData()
+        arr = arr.sort((a, b) => (a.code < b.code ? 1 : -1))
+        let codes = arr.map(({ code }) => code)
+        const bidArr = arr.map(({ totalBid }) => totalBid)
+        const askArr = arr.map(({ totalAsk }) => totalAsk)
+        // console.log(arr.find(({ code }) => code == 'HPG'))
+
+        const trace1 = {
+          y: codes,
+          x: bidArr,
+          name: 'Bid',
+          type: 'bar',
+          orientation: 'h',
+          marker: {
+            color: '#25A69A',
+          },
+        }
+
+        const trace2 = {
+          y: codes,
+          x: askArr,
+          name: 'Ask',
+          type: 'bar',
+          orientation: 'h',
+          marker: {
+            color: '#EF5350',
+          },
+        }
+
+        // return [trace1, trace2]
+        const data = [trace1, trace2]
+        const layout = { barmode: 'stack', height: 1000 }
+        if (!isRendered) {
+          Plotly.newPlot('myDiv', data, layout)
+          // console.log(Plotly);
+          isRendered = true
+        } else {
+          // Plotly.update('myDiv', data, layout)
+          console.log('Updated')
+          // Plotly.restyle('myDiv', 'data', data, [1, 2]);
+          Plotly.restyle('myDiv', {
+            x: [trace1.x, trace2.x],
+            y: [trace1.y, trace2.y],
+          })
+        }
+      }
+
+      // const [trace1, trace2] = setupData()
+      // let data = [trace1, trace2]
+      // const layout = { barmode: 'stack', height: 1000}
+      // Plotly.newPlot('myDiv', data, layout)
+
+      // function updatePlot() {
+
+      // }
+      // setInterval(() => {
+      //   let arr =  <%- JSON.stringify(globalArr) %>
+      //   const hpg = arr.find(({code}) => code === 'HPG')
+      //   console.log(hpg);
+      //   let [trace1, trace2] = getData()
+      //   data = [trace1, trace2]
+      //   Plotly.newPlot('myDiv', data, layout)
+      //   console.log('UPDATED');
+      // }, RENDER_INTERVAL)
+
+      setInterval(() => {
+        setupData()
+      }, 1000)
+
+      function renderPlot() {}
+    </script>
+  </body>
+</html>
