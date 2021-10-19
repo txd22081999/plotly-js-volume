@@ -4,7 +4,7 @@ const cors = require('cors')
 const { router } = require('./router')
 // import { router } from './router'
 
-const PORT = 5998
+const PORT = 7000
 const app = express()
 
 app.use(cors())

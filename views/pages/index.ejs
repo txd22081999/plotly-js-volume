@@ -12,7 +12,8 @@
     <div id="myDiv"></div>
     <script>
       async function fetchData() {
-        let data = await fetch('http://localhost:5998/get-data')
+        // let data = await fetch('http://localhost:7000/get-data')
+        let data = await fetch('http://203.205.21.243:7000/get-data')
         data = await data.json()
         return data
       }
@@ -70,29 +71,9 @@
         }
       }
 
-      // const [trace1, trace2] = setupData()
-      // let data = [trace1, trace2]
-      // const layout = { barmode: 'stack', height: 1000}
-      // Plotly.newPlot('myDiv', data, layout)
-
-      // function updatePlot() {
-
-      // }
-      // setInterval(() => {
-      //   let arr =  <%- JSON.stringify(globalArr) %>
-      //   const hpg = arr.find(({code}) => code === 'HPG')
-      //   console.log(hpg);
-      //   let [trace1, trace2] = getData()
-      //   data = [trace1, trace2]
-      //   Plotly.newPlot('myDiv', data, layout)
-      //   console.log('UPDATED');
-      // }, RENDER_INTERVAL)
-
       setInterval(() => {
         setupData()
       }, 1000)
-
-      function renderPlot() {}
     </script>
   </body>
 </html>
