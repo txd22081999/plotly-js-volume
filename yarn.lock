@@ -878,10 +878,10 @@ picomatch@^2.0.4, picomatch@^2.2.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
 
-plotly.js-dist-min@^2.5.1:
+plotly.js-dist@^2.5.1:
   version "2.5.1"
-  resolved "https://registry.yarnpkg.com/plotly.js-dist-min/-/plotly.js-dist-min-2.5.1.tgz#07408a4a081d99cd5660b1536997090dd7d625e2"
-  integrity sha512-IdrbRgZ3bf0Ksszk+F+2yqokGHYCBruFOL6RBNPNJ9T3d5UegiM4h7CgBIhdV5NEI5FJnI0SQ/FDGnWkTwSF7g==
+  resolved "https://registry.yarnpkg.com/plotly.js-dist/-/plotly.js-dist-2.5.1.tgz#640bfcb401d508e3539f7dfbe8139a16b24b2719"
+  integrity sha512-6mSqcrgPQNI6HZYfusUTZJdeM9Rym0ktcEwAOxfP3BPXBLQWFTGATZhnm4lW0WMLgpGPVUpKUJUmkcmXnVJ6zQ==
 
 prepend-http@^2.0.0:
   version "2.0.0"
